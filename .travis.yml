@@ -6,8 +6,11 @@ matrix:
     - python: "2.7"
       env:
         - TOX_ENV=py27
+        - DJANGO_SETTINGS_MODULE=omaha_server.settings_test_postgres
     - python: "2.7"
-      env: TOX_ENV=coverage
+      env:
+        - TOX_ENV=coverage
+        - DJANGO_SETTINGS_MODULE=omaha_server.settings_test_postgres
 
 cache: pip
 sudo: false
