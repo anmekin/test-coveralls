@@ -1,0 +1,28 @@
+language: python
+matrix:
+  allow_failures:
+    - env: TOX_ENV=py34
+  include:
+    - python: "2.7"
+      env:
+        - TOX_ENV=py27
+    - python: "2.7"
+      env: TOX_ENV=coverage
+
+cache: pip
+sudo: false
+
+virtualenv:
+  system_site_packages: true
+
+env:
+  global:
+    - HOST_NAME: 'travis-ci'
+    - SECRET_KEY: 'SECRET_KEY'
+
+
+install:
+  - pip install tox==2.2.1
+
+script:
+  - tox -e $TOX_ENV
